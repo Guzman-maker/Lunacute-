@@ -19,7 +19,7 @@ let D=null,tab='hoy',diaAbierto=null,mes=new Date(),unlocked=sessionStorage.getI
 const PD={nombre:'',objetivo:'conocer',duracionCiclo:28,duracionPeriodo:5,fechaUltimoPeriodo:null,pin:'',camuflaje:false,camuflajeNombre:'Notas de la semana',tema:'claro'};
 try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.perfil&&r.registros)D={...r,perfil:{...PD,...r.perfil}}}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}};
-const reg=i=>D.registros[i]||{};
+const reg=i=>(D&&D.registros[i])||{};
 const set=(i,p)=>{D.registros[i]={...reg(i),...p};save()};
 // ── ciclo ──
 function episodios(){const f=Object.keys(D.registros).filter(k=>(D.registros[k].flujo||0)>=1).sort(),b=[];
